@@ -6,6 +6,8 @@ import tkinter.messagebox
 
 #import database
 
+#refine the interface later and find some ecamples of industry ready ehr/emr
+
 class Student:
         def __init__(self,root):
             self.root = root
@@ -88,9 +90,39 @@ class Student:
             self.txtMobile.grid(row = 7, column = 1)
 
              #========================================ListBox & Scroll Bar Widgets=======================
-             
+
+            scrollbar = Scrollbar(DataFrameRIGHT)
+            scrollbar.grid(row=0, column = 1, sticky='ns')
+
+            studentlist = Listbox(DataFrameRIGHT, width = 41, height = 15, font=('arial', 12, 'bold'), yscrollcommand=scrollbar.set, bg = "Black")
+            studentlist.grid(row=0, column = 0, padx= 8)
+            scrollbar.config(command = studentlist.yview)
 
             #========================================Button Widgets=======================
+
+            self.btnAddDate = Button(ButtonFrame, text = "Add New", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnAddDate.grid(row=0, column = 0)
+
+            self.btnDisplayData = Button(ButtonFrame, text = "Display", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnDisplayData.grid(row=0, column = 1)
+
+            self.btnClearData = Button(ButtonFrame, text = "Clear", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnClearData.grid(row=0, column = 2)
+
+            self.btnDeleteData = Button(ButtonFrame, text = "Delete", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnDeleteData.grid(row=0, column = 3)
+
+            self.btnSearchData = Button(ButtonFrame, text = "Search", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnSearchData.grid(row=0, column = 4)
+
+            self.btnUpdateData = Button(ButtonFrame, text = "Update", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnUpdateData.grid(row=0, column = 5)
+
+            self.btnExit = Button(ButtonFrame, text = "Exit", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnExit.grid(row=0, column = 6)
+
+
+
 
 if __name__=='__main__':
     root = Tk()
