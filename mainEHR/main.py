@@ -3,6 +3,8 @@
 from distutils.command.sdist import sdist
 from tkinter import*
 import tkinter.messagebox
+
+from pkg_resources import WorkingSet, working_set
 from backEnd.stdDatabase_BackEnd import *
 
 
@@ -10,15 +12,24 @@ from backEnd.stdDatabase_BackEnd import *
 
 #refine the interface later and find some ecamples of industry ready ehr/emr
 
+# What is wrong so Far
+#     add new doesn't work in that it saves in new lines
+#     display works in that it adds the rest
+#     delete key button doesn't work
+#     update not working at all
+#     search somwehat WorkingSet
+#     exit working
+#	Make sure to delete student.db to restart entire database and possible have to a copy of student db
+
 class Student:
         def __init__(self,root):
             self.root = root
             self.root.title("Database Management System")
-            self.root.geometry("1350x750+0+0")
+            self.root.geometry("1350x7500+0+0")
             self.root.config(bg="cadet blue")
 
             StdID = StringVar()
-            FirstName = StringVar()
+            Firstname = StringVar()
             Surname = StringVar()
             DoB = StringVar()
             Age = StringVar()
@@ -49,11 +60,9 @@ class Student:
 
             def addData():
                 if(len(StdID.get()) != 0):
-                    addStdRec(StdID.get(), FirstName.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), \
-                                        Address.get(), Mobile.get())
-                studentlist.delete(0, END)
-                studentlist.insert(END, StdID.get(), FirstName.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), \
-                                        Address.get(), Mobile.get())
+                    addStdRec(StdID.get(), Firstname.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), Address.get(), Mobile.get())
+                    studentlist.delete(0, END)
+                    studentlist.insert(END, StdID.get(), Firstname.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), Address.get(), Mobile.get())
 
             def DisplayData():
                 studentlist.delete(0, END)
@@ -90,16 +99,16 @@ class Student:
             
             def searchDatabase():
                 studentlist.delete(0,END)
-                for row in searchData(StdID.get(), FirstName.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), Address.get(), Mobile.get()):
+                for row in searchData(StdID.get(), Firstname.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), Address.get(), Mobile.get()):
                     studentlist.insert(END,row,str(""))
 
             def update():
                 if(len(StdID.get())!=0):
                     deleteRec(sd[0])
                 if(len(StdID.get())!=0):
-                    addStdRec(StdID.get(), FirstName.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), Address.get(), Mobile.get())
+                    addStdRec(StdID.get(), Firstname.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), Address.get(), Mobile.get())
                     studentlist.delete(0, END)
-                    studentlist.insert(END, (StdID.get(), FirstName.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), Address.get(), Mobile.get()))
+                    studentlist.insert(END, (StdID.get(), Firstname.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), Address.get(), Mobile.get()))
             
 
             #========================================FRAMES=======================
@@ -115,7 +124,7 @@ class Student:
             ButtonFrame = Frame(MainFrame, bd=2, width = 1350, height = 70, padx=18, pady=10, bg = "Ghost White", relief = RIDGE)
             ButtonFrame.pack(side=BOTTOM)
 
-            DataFrame = Frame(MainFrame, bd=1, width = 1300, height = 400, padx= 20, pady= 20, bg = "cadet blue", relief = RIDGE)
+            DataFrame = Frame(MainFrame, bd=1, width = 1300, height = 400, padx= 20, pady= 20, bg = "cadet blue")
             DataFrame.pack(side=BOTTOM)
 
             DataFrameLEFT = LabelFrame(DataFrame, bd=1, width = 1000, height = 600, padx = 20, relief = RIDGE, bg ="Ghost White", font=('arial', 20, 'bold'), text = "Student Info\n")
@@ -133,7 +142,7 @@ class Student:
 
             self.lblfna = Label(DataFrameLEFT, font=('arial', 20, 'bold'), text="Firstname:", padx = 2, pady = 2, bg="Ghost White")
             self.lblfna.grid(row = 1, column = 0, sticky = W)
-            self.txtfna = Entry(DataFrameLEFT, font=('arial', 20, 'bold'), textvariable=FirstName, width = 39)
+            self.txtfna = Entry(DataFrameLEFT, font=('arial', 20, 'bold'), textvariable=Firstname, width = 39)
             self.txtfna.grid(row = 1, column = 1)
 
             self.lblSna = Label(DataFrameLEFT, font=('arial', 20, 'bold'), text="Surname:", padx = 2, pady = 2, bg="Ghost White")
@@ -179,8 +188,8 @@ class Student:
 
             #========================================Button Widgets=======================
 
-            self.btnAddDate = Button(ButtonFrame, text = "Add New", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4, command = addData)
-            self.btnAddDate.grid(row=0, column = 0)
+            self.btnAddData = Button(ButtonFrame, text = "Add New", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4, command = addData)
+            self.btnAddData.grid(row=0, column = 0)
 
             self.btnDisplayData = Button(ButtonFrame, text = "Display", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4, command = DisplayData)
             self.btnDisplayData.grid(row=0, column = 1)
