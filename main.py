@@ -1,7 +1,9 @@
 #Frontend
 
+from distutils.command.sdist import sdist
 from tkinter import*
 import tkinter.messagebox
+import stdDatabase_BackEnd
 
 
 #import database
@@ -23,6 +25,82 @@ class Student:
             Gender = StringVar()
             Address = StringVar()
             Mobile = StringVar()
+
+           
+
+             #========================================FUNCTION=======================
+
+            def iExit():
+                iExit = tkinter.messagebox.askyesno("Database Management System", "Confirm if you want to exit")
+                if iExit > 0:
+                    root.destroy()
+                    return
+
+            def clearData():
+                self.txtStdID.delete(0, END)
+                self.txtfna.delete(0, END)
+                self.txtSna.delete(0, END)
+                self.txtDoB.delete(0, END)
+                self.txtAge.delete(0, END)
+                self.txtGender.delete(0, END)
+                self.txtAdr.delete(0, END)
+                self.txtMobile.delete(0, END)
+                
+
+            def addData():
+                if(len(StdID.get()) != 0):
+                    stdDatabase_BackEnd.addStdRec(StdID.get(), FirstName.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), \
+                                        Address.get(), Mobile.get())
+                studentlist.delete(0, END)
+                studentlist.insert(END, StdID.get(), FirstName.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), \
+                                        Address.get(), Mobile.get())
+
+            def DisplayData():
+                studentlist.delete(0, END)
+                for row in stdDatabase_BackEnd.viewData():
+                    studentlist.insert(END,row,str(""))
+
+            def StudentRec(event):
+                global sd
+                searchStd = studentlist.curseselection()[0]
+                sd= studentlist.get(searchStd)
+                self.txtStdID.delete(0, END)
+                self.txtStdID.insert(END, sd[1])
+                self.txtfna.delete(0, END)
+                self.txtfna.insert(END, sd[2])
+                self.txtSna.delete(0, END)
+                self.txtSna.insert(END, sd[3])
+                self.txtDoB.delete(0, END)
+                self.txtDoB.insert(END, sd[4])
+                self.txtAge.delete(0, END)
+                self.txtAge.insert(END, sd[5])
+                self.txtGender.delete(0, END)
+                self.txtGender.insert(END, sd[6])
+                self.txtAdr.delete(0, END)
+                self.txtAdr.insert(END, sd[7])
+                self.txtMobile.delete(0, END)
+                self.txtMobile.insert(END, sd[8])
+
+            def DeleteData():
+                if(len(StdID.get()) != 0):
+                    stdDatabase_BackEnd.deleteRec(sd[0])
+                    clearData()
+                    DisplayData()
+
+            
+            def searchDatabase():
+                studentlist.delete(0,END)
+                for row in stdDatabase_BackEnd.searchData(StdID.get(), FirstName.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), Address.get(), Mobile.get()):
+                    studentlist.insert(END,row,str(""))
+
+            def update():
+                if(len(StdID.get())!=0):
+                    stdDatabase_BackEnd.deleteRec(sd[0])
+                if(len(StdID.get())!=0):
+                    stdDatabase_BackEnd.addStdRec(StdID.get(), FirstName.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), Address.get(), Mobile.get())
+                    studentlist.delete(0, END)
+                    studentlist.insert(END, (StdID.get(), FirstName.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), Address.get(), Mobile.get()))
+            
 
             #========================================FRAMES=======================
             MainFrame = Frame(self.root, bg = "cadet blue")
@@ -94,31 +172,32 @@ class Student:
             scrollbar = Scrollbar(DataFrameRIGHT)
             scrollbar.grid(row=0, column = 1, sticky='ns')
 
-            studentlist = Listbox(DataFrameRIGHT, width = 41, height = 15, font=('arial', 12, 'bold'), yscrollcommand=scrollbar.set, bg = "Black")
+            studentlist = Listbox(DataFrameRIGHT, width = 41, height = 15, font=('arial', 12, 'bold'), yscrollcommand=scrollbar.set)
+            studentlist.bind('<<ListboxSelect>>', StudentRec)
             studentlist.grid(row=0, column = 0, padx= 8)
             scrollbar.config(command = studentlist.yview)
 
             #========================================Button Widgets=======================
 
-            self.btnAddDate = Button(ButtonFrame, text = "Add New", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnAddDate = Button(ButtonFrame, text = "Add New", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4, command = addData)
             self.btnAddDate.grid(row=0, column = 0)
 
-            self.btnDisplayData = Button(ButtonFrame, text = "Display", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnDisplayData = Button(ButtonFrame, text = "Display", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4, command = DisplayData)
             self.btnDisplayData.grid(row=0, column = 1)
 
-            self.btnClearData = Button(ButtonFrame, text = "Clear", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnClearData = Button(ButtonFrame, text = "Clear", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4, command = clearData)
             self.btnClearData.grid(row=0, column = 2)
 
-            self.btnDeleteData = Button(ButtonFrame, text = "Delete", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnDeleteData = Button(ButtonFrame, text = "Delete", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4, command = DeleteData)
             self.btnDeleteData.grid(row=0, column = 3)
 
-            self.btnSearchData = Button(ButtonFrame, text = "Search", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnSearchData = Button(ButtonFrame, text = "Search", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4, command= searchDatabase)
             self.btnSearchData.grid(row=0, column = 4)
 
-            self.btnUpdateData = Button(ButtonFrame, text = "Update", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnUpdateData = Button(ButtonFrame, text = "Update", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4, command = update)
             self.btnUpdateData.grid(row=0, column = 5)
 
-            self.btnExit = Button(ButtonFrame, text = "Exit", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4)
+            self.btnExit = Button(ButtonFrame, text = "Exit", font=('arial', 20, 'bold'), height = 1, width = 10, bd= 4, command = iExit)
             self.btnExit.grid(row=0, column = 6)
 
 
