@@ -41,7 +41,7 @@ def studentData():
 def addStdRec(StdID, Firstname, Surname, DoB, Age, Gender, Address, Mobile): # why is he passing an extra value in and what is the null for?
     con = sqlite3.connect("student.db")
     cur = con.cursor()
-    cur.execute("INSERT INTO student VALUES(NULL,?,?,?,?,?,?,?)", (StdID, Firstname, Surname, DoB, Age, Gender, Address, Mobile))
+    cur.execute("INSERT INTO student VALUES(NULL, ?,?,?,?,?,?,?,?)", (StdID, Firstname, Surname, DoB, Age, Gender, Address, Mobile))
     con.commit()
     con.close()
 
