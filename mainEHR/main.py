@@ -12,6 +12,8 @@ from backEnd.stdDatabase_BackEnd import *
 
 #refine the interface later and find some ecamples of industry ready ehr/emr
 
+#order of what to watch, sqlite3, understanding functionality, and TKINter UI tricks and tips
+
 # What is wrong so Far
 #     add new doesn't work in that it saves in new lines
 #     display works in that it adds the rest
@@ -39,7 +41,7 @@ class Student:
 
            
 
-             #========================================FUNCTION=======================
+             #========================================FUNCTIONS=======================
 
             def iExit():
                 iExit = tkinter.messagebox.askyesno("Database Management System", "Confirm if you want to exit")
@@ -110,7 +112,7 @@ class Student:
                     studentlist.delete(0, END)
                     studentlist.insert(END, (StdID.get(), Firstname.get(), Surname.get(), DoB.get(), Age.get(), Gender.get(), Address.get(), Mobile.get()))
             
-
+    # KNOW EVERYTHING BELOW IS TKINTER UI
             #========================================FRAMES=======================
             MainFrame = Frame(self.root, bg = "cadet blue")
             MainFrame.grid()
