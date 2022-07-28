@@ -1,5 +1,5 @@
 from tkinter import *
-from PIL import ImageTK, Image
+from PIL import ImageTK
 
 root = Tk()
 root.title('Using some icon')
