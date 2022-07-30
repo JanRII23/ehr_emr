@@ -15,21 +15,58 @@ c = conn.cursor()
 
 #create table
 # c.execute("""CREATE TABLE addresses (
+#             ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 #             first_name text,
 #             last_name text,
 #             address text,
 #             city text,
 #             state text,
-#             zipcode, integer
-# )""") you only create a table one time
-
+#             zipcode integer
+# )""") 
 #create a submit button & function
+
+def query():
+    conn = sqlite3.connect('address_book.db')
+    c = conn.cursor()
+
+    #to query the database
+    c.execute("SELECT *, oid FROM addresses")
+    records = c.fetchall()
+
+    print_records = ''
+    for record in records:
+        print_records += str(record) + "\n"
+
+    query_label = Label(root, text=print_records)
+    query_label.grid(row=8, column = 0, columnspan=2)
+
+    conn.commit()
+    conn.close()
 
 def submit():
     #store information
     #Whenever you have a function you have to make a curson and a connection
     conn = sqlite3.connect('address_book.db')
     c = conn.cursor()
+
+    #insert into table
+    c.execute("INSERT INTO addresses VALUES (NULL, :f_name, :l_name, :address, :city, :state, :zipcode)",
+
+                { #follow the naming convention
+                    'f_name': f_name.get(),
+                    'l_name': l_name.get(),
+                    'address': address.get(),
+                    'city': city.get(),
+                    'state': state.get(),
+                    'zipcode': zipcode.get()
+                })
+
+    #make sure when creating a table you set and ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL and when passing it into execute just list as NULL and it will automatically take care of itself --> later one make sure that the primary key is not being show
+
+
+    #check out how im commiting before deleting info input in the textboxes
+    conn.commit()
+    conn.close()
 
     #clear textboxes
     f_name.delete(0, END)
@@ -39,8 +76,6 @@ def submit():
     city.delete(0, END)
     zipcode.delete(0, END)
 
-    conn.commit()
-    conn.close()
 
 
 
@@ -82,9 +117,13 @@ state_label.grid(row = 4, column = 0)
 zipcode_label = Label(root, text = "Zipcode")
 zipcode_label.grid(row = 5, column = 0)
 
-
+#make a submit button
 submit_btn = Button(root, text = "Add Record", command = submit)
 submit_btn.grid(row = 6, column = 0, columnspan=2, pady = 10, padx= 10, ipadx= 100)
+
+#create a query button
+query_btn = Button(root, text="Show Records", command = query)
+query_btn.grid(row=7, column = 0, columnspan=2, pady=10, padx=10, ipadx=137)
 
 #commit changes
 conn.commit()
