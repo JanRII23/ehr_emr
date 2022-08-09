@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-task-manager',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskManagerComponent implements OnInit {
 
-  constructor() { }
+  taskForm !: FormGroup;
+  tasks : any [] = [];
+  inprogress: any [] = [];
+  done: any[] = [];
+  constructor(private fb : FormBuilder) { }
 
   ngOnInit(): void {
+    this.taskForm = this.fb.group({
+      item : ['', Validators.required]
+    })
   }
 
 }
