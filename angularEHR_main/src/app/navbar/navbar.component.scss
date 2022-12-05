@@ -1,3 +1,28 @@
+// .mat-toolbar{
+//     background-color: #e4635a;
+//     display:flex;
+//     flex-direction: row;
+
+// }
+
+// .title{
+//     display:flex;
+// }
+
+// h1{
+//     padding: 2px;
+// }
+
+
 .mat-toolbar{
-    background-color: #1b76f1;
+    background-color: #e4635a;
+
 }
+
+span{
+    padding: 2px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }

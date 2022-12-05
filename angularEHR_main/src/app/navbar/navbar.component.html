@@ -1,5 +1,56 @@
 <mat-toolbar>
 
-    <h1>Angular To-Do App</h1>
+
+
+    <mat-toolbar-row>
+
+        <button mat-icon-button class="example-icon" aria-label="menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span style="color: white">KLINIK</span>
+        <!-- possibly add a red overlay on top of white font -->
+        <span>[H]</span>
+
+        <span class="example-spacer"></span>
+
+        <button mat-icon-button class="favorite-icon" aria-label="notification icon">
+            <mat-icon>notification_important</mat-icon>
+        </button>
+
+        <!-- <span>user</span> -->
+
+
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu with dropdown">
+            <mat-icon>person_outline</mat-icon>
+            <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+
+            <button mat-menu-item>
+                <mat-icon>person</mat-icon>
+                <span>Profile</span>
+            </button>
+
+            <button mat-menu-item>
+                <mat-icon>help</mat-icon>
+                <span>Help</span>
+            </button>
+
+            <button mat-menu-item>
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Logout</span>
+            </button>
+
+            
+        </mat-menu>
+
+      
+    </mat-toolbar-row>
+
+    <!-- <mat-toolbar-row>
+        
+      </mat-toolbar-row> -->
 
 </mat-toolbar>

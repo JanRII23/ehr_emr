@@ -15,6 +15,7 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatIconModule,
     MatButtonModule,
     DragDropModule,
+    MatMenuModule,
 
   ],
   providers: [],
