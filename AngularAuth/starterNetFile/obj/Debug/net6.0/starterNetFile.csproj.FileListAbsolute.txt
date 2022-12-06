@@ -1,0 +1,15 @@
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/bin/Debug/net6.0/starterNetFile
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/bin/Debug/net6.0/starterNetFile.deps.json
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/bin/Debug/net6.0/starterNetFile.runtimeconfig.json
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/bin/Debug/net6.0/starterNetFile.dll
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/bin/Debug/net6.0/starterNetFile.pdb
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/obj/Debug/net6.0/starterNetFile.csproj.AssemblyReference.cache
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/obj/Debug/net6.0/starterNetFile.GeneratedMSBuildEditorConfig.editorconfig
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/obj/Debug/net6.0/starterNetFile.AssemblyInfoInputs.cache
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/obj/Debug/net6.0/starterNetFile.AssemblyInfo.cs
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/obj/Debug/net6.0/starterNetFile.csproj.CoreCompileInputs.cache
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/obj/Debug/net6.0/starterNetFile.dll
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/obj/Debug/net6.0/refint/starterNetFile.dll
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/obj/Debug/net6.0/starterNetFile.pdb
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/obj/Debug/net6.0/starterNetFile.genruntimeconfig.cache
+/home/atakaii/ehr_emr/AngularAuth/starterNetFile/obj/Debug/net6.0/ref/starterNetFile.dll

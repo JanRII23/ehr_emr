@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/atakaii/ehr_emr/AngularAuth/starterNetFile/starterNetFile.csproj": {}
+  },
+  "projects": {
+    "/home/atakaii/ehr_emr/AngularAuth/starterNetFile/starterNetFile.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/atakaii/ehr_emr/AngularAuth/starterNetFile/starterNetFile.csproj",
+        "projectName": "starterNetFile",
+        "projectPath": "/home/atakaii/ehr_emr/AngularAuth/starterNetFile/starterNetFile.csproj",
+        "packagesPath": "/home/atakaii/.nuget/packages/",
+        "outputPath": "/home/atakaii/ehr_emr/AngularAuth/starterNetFile/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/atakaii/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/atakaii/dotnet/sdk/6.0.403/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
