@@ -16,12 +16,17 @@ import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatMenuModule} from '@angular/material/menu';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    TaskManagerComponent
+    TaskManagerComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
