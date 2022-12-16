@@ -7,7 +7,7 @@ import { TaskManagerComponent } from './task-manager/task-manager.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path:'', component:TaskManagerComponent}
+  {path:'todo', component:TaskManagerComponent}
 
 ];
 
