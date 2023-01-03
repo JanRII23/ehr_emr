@@ -18,6 +18,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatMenuModule} from '@angular/material/menu';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgToastModule } from 'ng-angular-popup';
 
 
 @NgModule({
@@ -41,7 +43,8 @@ import { SignupComponent } from './components/signup/signup.component';
     MatButtonModule,
     DragDropModule,
     MatMenuModule,
-
+    HttpClientModule,
+    NgToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

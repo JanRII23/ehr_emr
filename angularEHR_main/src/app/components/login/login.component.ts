@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import ValidateForm from 'src/app/helpers/validateForms';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -14,7 +17,7 @@ export class LoginComponent implements OnInit {
   isText: boolean = false;
   eyeIcon: string = "visibility_off";
   loginForm! : FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private toast: NgToastService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -23,9 +26,23 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  onSubmit(){
+  onLogin(){
 
     if (this.loginForm.valid){
+
+      this.auth.login(this.loginForm.value)
+      .subscribe({
+        next:(res)=>{
+          // alert(res.message);
+          this.toast.success({detail:"SUCCESS", summary: res.message, duration: 5000});
+          this.loginForm.reset();
+          this.router.navigate(['todo']);
+        },
+          error:(err)=>{
+            // alert(err?.error.message)
+            this.toast.error({detail:"ERROR", summary: "Username or Password is wrong!", duration: 5000});
+          }
+      })
 
     }else{
       ValidateForm.validateAllFormFields(this.loginForm);

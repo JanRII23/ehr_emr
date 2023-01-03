@@ -7,8 +7,9 @@ import { TaskManagerComponent } from './task-manager/task-manager.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path:'todo', component:TaskManagerComponent}
+  {path:'todo', component:TaskManagerComponent},
 
+  {path:'', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 @NgModule({
