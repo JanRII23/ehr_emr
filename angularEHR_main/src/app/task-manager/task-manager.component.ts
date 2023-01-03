@@ -25,7 +25,7 @@ export class TaskManagerComponent implements OnInit {
   ngOnInit(): void {
     this.taskForm = this.fb.group({
       item : ['', Validators.required]
-    }),
+    });
     this.api.getUsers()
     .subscribe(res=>{
       this.users = res;

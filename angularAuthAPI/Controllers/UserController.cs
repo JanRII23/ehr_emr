@@ -122,7 +122,8 @@ namespace angularAuthAPI.Controllers{
                 var identity = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Role, user.Role),
-                    new Claim(ClaimTypes.Name, $"{user.FirstName} {user.Lastname}")
+                    // new Claim(ClaimTypes.Name, $"{user.FirstName} {user.Lastname}")
+                    new Claim(ClaimTypes.Name, $"{user.FirstName}")
                 });
 
                 var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
