@@ -15,11 +15,13 @@
 
         <span class="example-spacer"></span>
 
+        <span>Hello, User</span>
+
         <button mat-icon-button class="favorite-icon" aria-label="notification icon">
             <mat-icon>notification_important</mat-icon>
         </button>
 
-        <!-- <span>user</span> -->
+
 
 
 
@@ -39,7 +41,7 @@
                 <span>Help</span>
             </button>
 
-            <button mat-menu-item>
+            <button (click)="logout()" mat-menu-item>
                 <mat-icon>exit_to_app</mat-icon>
                 <span>Logout</span>
             </button>

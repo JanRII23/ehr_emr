@@ -2,6 +2,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ITask } from '../model/task';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-task-manager',
@@ -16,11 +17,18 @@ export class TaskManagerComponent implements OnInit {
   done: ITask[] = [];
   updateIndex!:any;
   isEditEnabled : boolean = false;
-  constructor(private fb : FormBuilder) { }
+
+  public users: any = [];
+
+  constructor(private fb : FormBuilder, private api : ApiService) { }
 
   ngOnInit(): void {
     this.taskForm = this.fb.group({
       item : ['', Validators.required]
+    }),
+    this.api.getUsers()
+    .subscribe(res=>{
+      this.users = res;
     })
   }
 

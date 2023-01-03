@@ -10,6 +10,7 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
 
 namespace angularAuthAPI.Controllers{
 
@@ -128,14 +129,16 @@ namespace angularAuthAPI.Controllers{
 
                 var tokenDescriptor = new SecurityTokenDescriptor{
                     Subject = identity,
-                    Expires = DateTime.Now.AddDays(1),
+                    Expires = DateTime.UtcNow.AddDays(1),
                     SigningCredentials = credentials
                 };
 
+            
                 var token = jwtTokenHandler.CreateToken(tokenDescriptor);
                 return jwtTokenHandler.WriteToken(token);
             }
 
+            [Authorize]
             [HttpGet]
 
             public async Task<ActionResult<User>> GetAllUser()
