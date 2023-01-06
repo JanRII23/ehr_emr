@@ -17,10 +17,10 @@ export class NavbarComponent implements OnInit {
   constructor(private auth: AuthService, private api : ApiService, private userStore: UserStoreService) { }
 
   ngOnInit() {
-    this.api.getUsers()
-    .subscribe(res=>{
-      this.users = res;
-    });
+    // this.api.getUsers()
+    // .subscribe(res=>{
+    //   this.users = res;
+    // });
 
     this.userStore.getFullNameFromStore()
     .subscribe(val=>{

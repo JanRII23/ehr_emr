@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ITask } from '../model/task';
 import { ApiService } from '../services/api.service';
+import { AuthService } from '../services/auth.service';
+import { UserStoreService } from '../services/user-store.service';
+
 
 @Component({
   selector: 'app-task-manager',
@@ -20,15 +23,23 @@ export class TaskManagerComponent implements OnInit {
 
   public users: any = [];
 
-  constructor(private fb : FormBuilder, private api : ApiService) { }
+  public fullName: string = "";
+
+  constructor(private fb : FormBuilder, private api : ApiService, private userStore : UserStoreService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.taskForm = this.fb.group({
       item : ['', Validators.required]
     });
-    this.api.getUsers()
-    .subscribe(res=>{
-      this.users = res;
+    // this.api.getUsers()
+    // .subscribe(res=>{
+    //   this.users = res;
+    // });
+
+    this.userStore.getFullNameFromStore()
+    .subscribe(val => {
+      let fullNameFromToken = this.auth.getfullNameFromToken();
+      this.fullName = val || fullNameFromToken
     })
   }
 
