@@ -17,10 +17,12 @@ export class NavbarComponent implements OnInit {
   constructor(private auth: AuthService, private api : ApiService, private userStore: UserStoreService) { }
 
   ngOnInit() {
-    // this.api.getUsers()
-    // .subscribe(res=>{
-    //   this.users = res;
-    // });
+    this.api.getUsers()
+    .subscribe(res=>{
+      this.users = res;
+    });
+
+    //FIX THIS API getUsers call not refreshing the JWT TOKen at all also in task-manager.ts
 
     this.userStore.getFullNameFromStore()
     .subscribe(val=>{
